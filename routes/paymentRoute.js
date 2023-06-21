@@ -5,9 +5,9 @@ const {
   checkout,
 } = require("../controllers/paymentController");
 
-paymentRoute.post("/checkout", (req, res) => checkout);
+paymentRoute.route("/checkout").post(checkout);
 
-paymentRoute.post("/paymentverification", (req, res) => paymentVerification);
+paymentRoute.route("/paymentverification").post(paymentVerification);
 
 paymentRoute.get("/getkey", (req, res) =>
   res.status(200).json({ key: process.env.RAZORPAY_API_KEY })
