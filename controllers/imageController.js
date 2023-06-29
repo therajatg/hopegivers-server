@@ -85,7 +85,7 @@ const getImage = async (req, res) => {
   }
 };
 
-const deleteImage = () => async (req, res) => {
+const deleteImage = async (req, res) => {
   try {
     const imageName = req.params.imageName;
     const deleteImage = await pool.query(
