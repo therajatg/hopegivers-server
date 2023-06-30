@@ -6,8 +6,8 @@ const {
   GetObjectCommand,
   DeleteObjectCommand,
 } = require("@aws-sdk/client-s3");
-const Pool = require("pg").Pool;
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
+const { pool } = require("../db/db");
 
 const getRandomimageName = () => crypto.randomBytes(16).toString("hex");
 
@@ -22,14 +22,6 @@ const s3 = new S3Client({
     secretAccessKey,
   },
   region: bucketRegion,
-});
-
-const pool = new Pool({
-  user: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  host: process.env.PG_HOST,
-  port: process.env.PG_PORT,
-  database: process.env.PG_DATABASE,
 });
 
 const postImage = async (req, res) => {
