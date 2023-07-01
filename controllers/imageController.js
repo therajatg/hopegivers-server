@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-const sharp = require("sharp");
+// const sharp = require("sharp");
 const {
   S3Client,
   PutObjectCommand,
