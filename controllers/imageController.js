@@ -33,6 +33,8 @@ const postImage = async (req, res) => {
     //   .resize({ height: 100, width: null, fit: "contain" })
     //   .toBuffer();
 
+    console.log("file.buffer", file.buffer);
+
     const buffer = await sharp(file.buffer)
       .resize({ height: 100, width: null, fit: "contain" })
       .toFormat("jpeg", { mozjpeg: true });
