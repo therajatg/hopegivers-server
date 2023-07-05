@@ -45,7 +45,7 @@ const paymentVerification = async (req, res) => {
   if (isAuthentic) {
     // Database comes here
     res.redirect(
-      `http://localhost:5173/paymentsuccess?reference=${razorpay_payment_id}`
+      `https://www.hopegiversfoundation.in/paymentsuccess?reference=${razorpay_payment_id}`
     );
   } else {
     res.status(400).json({
