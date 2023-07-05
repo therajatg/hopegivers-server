@@ -1,5 +1,5 @@
 const crypto = require("crypto");
-// const sharp = require("sharp");
+const sharp = require("sharp");
 const {
   S3Client,
   PutObjectCommand,
@@ -30,14 +30,14 @@ const postImage = async (req, res) => {
     const file = req.file;
 
     const buffer = await sharp(file.buffer)
-      .resize({ height: 100, width: null, fit: "contain" })
+      .resize({ height: 400, width: null, fit: "contain" })
       .toBuffer();
 
     console.log("file.buffer", file.buffer);
 
-    // const buffer = await sharp(file.buffer)
-    //   .resize({ height: 100, width: null, fit: "contain" })
-    //   .toFormat("jpeg", { mozjpeg: true });
+    // const buffer = sharp(file.buffer)
+    //   .resize({ height: 300, width: null, fit: "contain" })
+    //   .jpeg({ mozjpeg: true });
 
     const params = {
       Bucket: bucketName,
