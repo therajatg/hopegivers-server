@@ -33,16 +33,16 @@ const postImage = async (req, res) => {
     //   .resize({ height: 100, width: null, fit: "contain" })
     //   .toBuffer();
 
-    const buffer = await sharp(file.buffer)
-      .resize({ height: 100, width: null, fit: "contain" })
-      .toFormat("jpeg", { mozjpeg: true });
+    // const buffer = await sharp(file.buffer)
+    //   .resize({ height: 100, width: null, fit: "contain" })
+    //   .toFormat("jpeg", { mozjpeg: true });
 
     const params = {
       Bucket: bucketName,
       // Key: req.file.originalname,
       Key: randomImageName,
-      // Body: file.buffer,
-      Body: buffer,
+      Body: file.buffer,
+      // Body: buffer,
       ContentType: req.file.mimetype,
     };
 
